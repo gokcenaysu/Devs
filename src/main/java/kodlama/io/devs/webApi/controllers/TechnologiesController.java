@@ -1,7 +1,9 @@
 package kodlama.io.devs.webApi.controllers;
 
-import kodlama.io.devs.business.abstracts.TechnologyService;
-import kodlama.io.devs.entities.Technology;
+import kodlama.io.devs.services.abstracts.TechnologyService;
+import kodlama.io.devs.services.requests.CreateTechnologyRequest;
+import kodlama.io.devs.services.responses.GetAllTechnologyResponse;
+import kodlama.io.devs.models.Technology;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +18,7 @@ public class TechnologiesController {
     }
 
     @GetMapping("/getall")
-    public List<Technology> getAll(){
+    public List<GetAllTechnologyResponse> getAll(){
         return service.getAll();
     }
 
@@ -26,8 +28,8 @@ public class TechnologiesController {
     }
 
     @PostMapping("/add")
-    public void add(Technology technology) throws Exception {
-        service.add(technology);
+    public void add(CreateTechnologyRequest createTechnologyRequest) throws Exception {
+        service.add(createTechnologyRequest);
     }
 
     @PutMapping("/update")
