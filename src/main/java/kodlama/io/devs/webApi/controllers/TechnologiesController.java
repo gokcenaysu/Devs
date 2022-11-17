@@ -23,22 +23,22 @@ public class TechnologiesController {
     }
 
     @GetMapping("/{id}")
-    public Technology findById(int id){
+    public Technology findById(int id) throws Exception {
         return service.findById(id);
     }
 
     @PostMapping("/add")
-    public void add(CreateTechnologyRequest createTechnologyRequest) throws Exception {
-        service.add(createTechnologyRequest);
+    public void add(Technology technology) throws Exception {
+        service.add(technology);
     }
 
     @PutMapping("/update")
-    public void update(Technology technology, int id) throws Exception {
-        service.update(technology, id);
+    public void update(Technology technology) throws Exception {
+        service.update(technology);
     }
 
     @DeleteMapping("/remove")
-    public void remove(int id) throws Exception {
-        service.remove(id);
+    public void remove(Technology technology) throws Exception {
+        service.remove(technology);
     }
 }

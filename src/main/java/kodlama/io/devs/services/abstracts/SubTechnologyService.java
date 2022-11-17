@@ -8,7 +8,7 @@ public interface SubTechnologyService {
     List<SubTechnology> getAll();
     SubTechnology findById(int id);
 
-    void add(SubTechnology subTechnology);
-    void update(SubTechnology subTechnology,int id) throws Exception;
-    void remove(int id) throws Exception;
+    void add(SubTechnology subTechnology) throws Exception;
+    void update(SubTechnology subTechnology) throws Exception;
+    void remove(SubTechnology subTechnology) throws Exception;
 }

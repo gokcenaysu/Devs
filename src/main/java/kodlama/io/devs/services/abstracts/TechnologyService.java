@@ -9,11 +9,11 @@ import java.util.List;
 public interface TechnologyService {
     List<GetAllTechnologyResponse> getAll();
 
-    Technology findById(int id);
+    Technology findById(int id) throws Exception;
 
-    void add(CreateTechnologyRequest createTechnologyRequest) throws Exception;
+    void add(Technology technology) throws Exception;
 
-    void update(Technology technology, int id) throws Exception;
+    void update(Technology technology) throws Exception;
 
-    void remove(int id) throws Exception;
+    void remove(Technology technology) throws Exception;
 }

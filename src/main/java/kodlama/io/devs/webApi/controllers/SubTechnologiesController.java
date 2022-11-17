@@ -26,17 +26,17 @@ public class SubTechnologiesController {
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody SubTechnology subTechnology) {
+    public void add(@RequestBody SubTechnology subTechnology) throws Exception{
         this.service.add(subTechnology);
     }
 
     @PutMapping("/update")
-    public void update(@RequestBody SubTechnology subTechnology, int id) throws Exception{
-        this.service.update(subTechnology,id);
+    public void update(SubTechnology subTechnology) throws Exception{
+        this.service.update(subTechnology);
     }
 
     @DeleteMapping("/remove")
-    public void remove(@RequestParam int id) throws Exception{
-        this.service.remove(id);
+    public void remove(SubTechnology subTechnology) throws Exception{
+        this.service.remove(subTechnology);
     }
 }

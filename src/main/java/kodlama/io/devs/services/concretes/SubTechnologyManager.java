@@ -1,8 +1,10 @@
 package kodlama.io.devs.services.concretes;
 
-import kodlama.io.devs.dataAccess.repositories.SubTechnologyRepository;
+import kodlama.io.devs.models.Technology;
+import kodlama.io.devs.repositories.SubTechnologyRepository;
 import kodlama.io.devs.models.SubTechnology;
 import kodlama.io.devs.services.abstracts.SubTechnologyService;
+import kodlama.io.devs.services.requireds.FieldService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +13,12 @@ import java.util.List;
 public class SubTechnologyManager implements SubTechnologyService {
 
     private SubTechnologyRepository repository;
+    private FieldService<SubTechnology> fieldService;
 
-    public SubTechnologyManager(SubTechnologyRepository repository) {
+
+    public SubTechnologyManager(SubTechnologyRepository repository, FieldService<SubTechnology> fieldService) {
         this.repository = repository;
+        this.fieldService=fieldService;
     }
 
     @Override
@@ -27,19 +32,17 @@ public class SubTechnologyManager implements SubTechnologyService {
     }
 
     @Override
-    public void add(SubTechnology subTechnology) {
-        this.repository.save(subTechnology);
+    public void add(SubTechnology subTechnology) throws Exception{
+        this.fieldService.add(subTechnology);
     }
 
     @Override
-    public void update(SubTechnology subTechnology, int id) throws Exception {
-        SubTechnology subTech = repository.getReferenceById(id);
-        subTech.setName(subTechnology.getName());
-        repository.save(subTech);
+    public void update(SubTechnology subTechnology) throws Exception {
+        this.fieldService.update(subTechnology);
     }
 
     @Override
-    public void remove(int id) {
-        this.repository.deleteById(id);
+    public void remove(SubTechnology subTechnology) throws Exception{
+        this.fieldService.remove(subTechnology);
     }
 }
